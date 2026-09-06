@@ -411,6 +411,7 @@ a {
   position: relative;
   z-index: 1;
   text-align: center;
+  margin-top: -3rem; /* Aggressively pull the footer up */
   padding-top: 0;
   padding-bottom: var(--space-xl);
 }
