@@ -542,6 +542,16 @@ a {
   border-radius: var(--radius-md);
 }
 
+.footer-disclaimer {
+  margin-top: var(--space-2xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid rgba(0,0,0,0.05);
+  font-size: 0.65rem;
+  color: var(--gray-500);
+  line-height: 1.5;
+  text-align: center;
+}
+
 
 /* =============================================
    ANIMATIONS
