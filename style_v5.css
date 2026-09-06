@@ -195,8 +195,13 @@ a {
   flex-shrink: 0;
 }
 
-.hero__sub-badge strong {
+.hero__sub-badge .text-green {
   color: var(--green-primary);
+  font-weight: 700;
+}
+
+.hero__sub-badge .text-gold {
+  color: var(--gold-primary);
   font-weight: 700;
 }
 
@@ -238,7 +243,7 @@ a {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--gray-700);
   line-height: 1.5;
-  margin-bottom: 0;
+  margin-bottom: var(--space-md);
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
