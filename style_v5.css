@@ -646,6 +646,19 @@ a {
     max-width: 680px;
   }
 
+  .site-header {
+    padding-bottom: var(--space-md);
+  }
+
+  .hero__badge {
+    margin-top: 0;
+    margin-bottom: var(--space-sm);
+  }
+
+  .hero__sub-badge {
+    margin-top: 0;
+  }
+
   .hero__badge-text {
     font-size: 0.75rem;
   }
