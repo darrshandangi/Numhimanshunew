@@ -411,7 +411,7 @@ a {
   position: relative;
   z-index: 1;
   text-align: center;
-  padding-top: var(--space-xl);
+  padding-top: 0;
   padding-bottom: var(--space-xl);
 }
 
@@ -427,6 +427,8 @@ a {
 }
 
 .footer__tagline-img {
+  display: block;
+  margin: 0 auto;
   max-width: 420px;
   width: 100%;
   height: auto;
