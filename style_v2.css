@@ -55,6 +55,18 @@
   --shadow-gold: 0 4px 20px rgba(200,168,78,0.25);
 }
 
+@media (max-width: 768px) {
+  :root {
+    --space-sm:   0.35rem;
+    --space-md:   0.75rem;
+    --space-lg:   1rem;
+    --space-xl:   1.25rem;
+    --space-2xl:  1.75rem;
+    --space-3xl:  2.25rem;
+    --space-4xl:  3rem;
+  }
+}
+
 /* ---------- RESET & BASE ---------- */
 *, *::before, *::after {
   margin: 0;
@@ -132,7 +144,7 @@ a {
 .site-header {
   position: relative;
   z-index: 10;
-  padding: var(--space-lg) 0 var(--space-md);
+  padding: var(--space-lg) 0 0;
   text-align: center;
 }
 
@@ -162,7 +174,8 @@ a {
 /* --- Badge --- */
 .hero__badge {
   display: inline-block;
-  margin-bottom: var(--space-xl);
+  margin-top: -0.5rem;
+  margin-bottom: 0;
   animation: fadeSlideDown 0.8s ease-out both;
 }
 
@@ -182,6 +195,7 @@ a {
   border: 1.5px solid var(--gray-100);
   padding: var(--space-sm) var(--space-lg);
   border-radius: var(--radius-md);
+  margin-top: -0.5rem;
   margin-bottom: var(--space-xl);
   box-shadow: var(--shadow-sm);
   font-size: 0.85rem;
