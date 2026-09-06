@@ -238,7 +238,7 @@ a {
   font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--gray-700);
   line-height: 1.5;
-  margin-bottom: var(--space-md);
+  margin-bottom: 0;
   max-width: 600px;
   margin-left: auto;
   margin-right: auto;
@@ -257,6 +257,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
+  margin-top: -1rem; /* Offset built-in whitespace in the PNG */
   margin-bottom: var(--space-xl);
   animation: fadeSlideUp 0.9s 0.55s ease-out both;
 }
