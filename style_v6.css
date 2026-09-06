@@ -238,21 +238,53 @@ a {
   line-height: 1.15;
 }
 
-/* --- Sub-headline --- */
-.hero__subheadline {
-  font-size: clamp(1rem, 2.5vw, 1.25rem);
-  color: var(--gray-700);
-  line-height: 1.5;
+/* --- Video Prompt Pill --- */
+.video-prompt-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-md);
+  background: linear-gradient(90deg, #FDFBF4, #F7F0D8);
+  border: 1px solid rgba(200, 168, 78, 0.2);
+  padding: 6px 20px 6px 6px;
+  border-radius: var(--radius-pill);
   margin-bottom: var(--space-md);
-  max-width: 600px;
-  margin-left: auto;
-  margin-right: auto;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.05);
   animation: fadeSlideUp 0.9s 0.45s ease-out both;
 }
 
-.hero__subheadline strong {
-  color: var(--gold-primary);
-  font-weight: 700;
+.video-prompt-pill__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  background: var(--green-deep);
+  border-radius: 50%;
+  color: var(--white);
+  flex-shrink: 0;
+}
+
+.video-prompt-pill__icon svg {
+  width: 18px;
+  height: 18px;
+  margin-left: 2px; /* optical alignment */
+}
+
+.video-prompt-pill__text {
+  font-family: var(--font-body);
+  font-size: 0.95rem;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+}
+
+.video-prompt-pill__text .text-gold {
+  color: #B58500; /* Darker gold for readability on pale background */
+  margin-right: 4px;
+}
+
+.video-prompt-pill__text .text-green {
+  color: var(--green-deep);
 }
 
 /* =============================================
