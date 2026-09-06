@@ -162,7 +162,7 @@ a {
 /* --- Badge --- */
 .hero__badge {
   display: inline-block;
-  margin-bottom: var(--space-md);
+  margin-bottom: var(--space-xl);
   animation: fadeSlideDown 0.8s ease-out both;
 }
 
@@ -203,10 +203,14 @@ a {
 /* --- Headline --- */
 .hero__headline {
   font-family: var(--font-display);
+  font-size: clamp(2.5rem, 6vw, 4.5rem);
   font-weight: 900;
-  line-height: 1.05;
-  margin-bottom: var(--space-md);
-  animation: fadeSlideUp 0.9s 0.3s ease-out both;
+  line-height: 1.1;
+  color: var(--green-deep);
+  margin-bottom: var(--space-xl);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-xs);
 }
 
 .hero__headline-line {
@@ -231,10 +235,13 @@ a {
 
 /* --- Sub-headline --- */
 .hero__subheadline {
-  font-size: 1.05rem;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
   color: var(--gray-700);
-  line-height: 1.6;
-  margin-bottom: var(--space-2xl);
+  line-height: 1.5;
+  margin-bottom: var(--space-xl);
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
   animation: fadeSlideUp 0.9s 0.45s ease-out both;
 }
 
@@ -250,7 +257,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
   animation: fadeSlideUp 0.9s 0.55s ease-out both;
 }
 
@@ -308,7 +315,7 @@ a {
   justify-content: center;
   gap: 0;
   max-width: 480px;
-  margin: 0 auto var(--space-2xl);
+  margin: 0 auto var(--space-xl);
   background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-primary) 50%, var(--green-medium) 100%);
   color: var(--white);
   border-radius: var(--radius-md);
@@ -386,7 +393,7 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-bottom: var(--space-2xl);
+  margin-bottom: var(--space-xl);
   animation: fadeSlideUp 0.9s 0.85s ease-out both;
 }
 
@@ -403,14 +410,15 @@ a {
 .site-footer {
   position: relative;
   z-index: 1;
-  padding: 0 0 var(--space-2xl);
   text-align: center;
+  padding-top: var(--space-xl);
+  padding-bottom: var(--space-xl);
 }
 
 .footer__divider-line {
-  width: 200px;
+  width: 100px;
   height: 2px;
-  margin: 0 auto var(--space-lg);
+  margin: 0 auto var(--space-xl);
   background: linear-gradient(90deg, transparent, var(--gold-primary), transparent);
 }
 
