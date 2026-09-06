@@ -365,8 +365,8 @@ a {
 .getting-started {
   background: transparent;
   color: var(--gray-700);
-  padding: var(--space-xl) var(--space-sm);
-  margin-bottom: var(--space-xl);
+  padding: 0 var(--space-sm);
+  margin-bottom: 0;
   text-align: left;
   animation: fadeSlideUp 0.9s 0.7s ease-out both;
 }
@@ -547,8 +547,8 @@ a {
 }
 
 .footer-disclaimer {
-  margin-top: var(--space-2xl);
-  padding-top: var(--space-lg);
+  margin-top: var(--space-md);
+  padding-top: var(--space-md);
   border-top: 1px solid rgba(0,0,0,0.05);
   font-size: 0.65rem;
   color: var(--gray-500);
