@@ -533,13 +533,17 @@ a {
   text-align: center;
 }
 
-.footer__tagline-img {
-  display: block;
-  margin: 0 auto;
-  max-width: 420px;
-  width: 100%;
-  height: auto;
-  border-radius: var(--radius-md);
+.footer__tagline-text {
+  font-family: var(--font-script);
+  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-weight: 400;
+  background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: var(--gold-primary);
+  margin: 0;
+  line-height: 1.2;
 }
 
 .footer-disclaimer {
