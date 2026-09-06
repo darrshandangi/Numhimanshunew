@@ -257,7 +257,6 @@ a {
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: -1rem; /* Offset built-in whitespace in the PNG */
   margin-bottom: var(--space-xl);
   animation: fadeSlideUp 0.9s 0.55s ease-out both;
 }
