@@ -139,13 +139,16 @@ a {
 .logo {
   display: inline-flex;
   align-items: center;
-  gap: var(--space-sm);
+  justify-content: center;
+  height: 60px; /* Restrict visible height */
+  overflow: hidden; /* Crop the image padding */
 }
 
 .logo__img {
-  height: 48px;
+  height: 250px; /* Force image to scale up */
   width: auto;
   object-fit: contain;
+  margin: -95px 0; /* Pull image up/down to center the visible part */
 }
 
 
