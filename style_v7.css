@@ -181,7 +181,7 @@ a {
 
 .hero__badge-img {
   width: 100%;
-  max-width: 500px;
+  max-width: 750px;
   height: auto;
 }
 
@@ -235,7 +235,7 @@ a {
 
 .hero__headline-line {
   display: block;
-  font-size: clamp(2.2rem, 7vw, 3.8rem);
+  font-size: clamp(2.2rem, 7vw, 4.5rem);
   color: var(--green-deep);
   letter-spacing: -0.01em;
 }
@@ -250,7 +250,7 @@ a {
 
 .hero__headline-accent {
   display: block;
-  font-size: clamp(3rem, 10vw, 5.5rem);
+  font-size: clamp(3rem, 10vw, 6.8rem);
   background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-primary) 40%, var(--gold-light) 70%, var(--gold-primary) 100%);
   background-size: 200% auto;
   -webkit-background-clip: text;
@@ -325,7 +325,7 @@ a {
 .pillars__img {
   max-width: 100%;
   height: auto;
-  max-height: 120px;
+  max-height: 150px;
 }
 
 
@@ -428,7 +428,7 @@ a {
   align-items: center;
   justify-content: center;
   gap: 0;
-  max-width: 480px;
+  max-width: 650px;
   margin: 0 auto var(--space-xl);
   background: linear-gradient(135deg, var(--green-deep) 0%, var(--green-primary) 50%, var(--green-medium) 100%);
   color: var(--white);
@@ -513,7 +513,7 @@ a {
 
 .social-proof__img {
   width: 100%;
-  max-width: 650px;
+  max-width: 850px;
   height: auto;
 }
 
