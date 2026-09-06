@@ -360,6 +360,61 @@ a {
 }
 
 /* =============================================
+   GETTING STARTED
+   ============================================= */
+.getting-started {
+  background: #000000;
+  color: var(--white);
+  border-radius: var(--radius-lg);
+  padding: var(--space-xl) var(--space-lg);
+  margin-bottom: var(--space-xl);
+  text-align: left;
+  box-shadow: var(--shadow-md);
+  animation: fadeSlideUp 0.9s 0.7s ease-out both;
+}
+
+.getting-started__title {
+  font-family: var(--font-display);
+  font-size: clamp(1.6rem, 5vw, 2.2rem);
+  font-weight: 700;
+  color: var(--white);
+  margin-bottom: var(--space-lg);
+}
+
+.getting-started__list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-md);
+}
+
+.getting-started__list li {
+  position: relative;
+  padding-left: 1.5rem;
+  font-size: 1rem;
+  line-height: 1.5;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.getting-started__list li::before {
+  content: '•';
+  position: absolute;
+  left: 0;
+  top: -2px;
+  color: var(--gray-300);
+  font-size: 1.5rem;
+  line-height: 1;
+}
+
+.getting-started__list a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* =============================================
    CTA BUTTON
    ============================================= */
 .cta-button {
