@@ -535,7 +535,7 @@ a {
 
 .footer__tagline-text {
   font-family: var(--font-script);
-  font-size: clamp(2.5rem, 7vw, 3.5rem);
+  font-size: clamp(1.6rem, 6.5vw, 3.5rem);
   font-weight: 400;
   background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
   -webkit-background-clip: text;
@@ -544,6 +544,7 @@ a {
   color: var(--gold-primary);
   margin: 0;
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .footer-disclaimer {
