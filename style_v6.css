@@ -543,9 +543,10 @@ a {
 }
 
 .footer__tagline-text {
-  font-family: var(--font-script);
+  font-family: var(--font-display);
+  font-style: italic;
   font-size: clamp(1.6rem, 6.5vw, 3.5rem);
-  font-weight: 400;
+  font-weight: 700;
   background: linear-gradient(135deg, var(--gold-deep) 0%, var(--gold-primary) 50%, var(--gold-light) 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
