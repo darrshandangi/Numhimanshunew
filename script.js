@@ -137,4 +137,133 @@ document.addEventListener('DOMContentLoaded', () => {
     }, { passive: true });
   }
 
+  // ========== LEAD CAPTURE POPUP ==========
+  const popupOverlay = document.getElementById('popup-overlay');
+  const leadForm = document.getElementById('lead-form');
+  
+  // Replace this with your deployed Google Apps Script Web App URL
+  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+
+  // Check if user already submitted the form
+  if (localStorage.getItem('numero_lead_submitted') === 'true') {
+    if (popupOverlay) {
+      popupOverlay.style.display = 'none';
+      document.body.style.overflow = 'auto'; // allow scrolling
+    }
+  } else {
+    // Show popup and lock body scroll
+    if (popupOverlay) {
+      popupOverlay.style.display = 'flex';
+      document.body.style.overflow = 'hidden'; // prevent scrolling while popup is active
+    }
+  }
+
+  if (leadForm) {
+    const nameInput = document.getElementById('lead-name');
+    const mobileInput = document.getElementById('lead-mobile');
+    const emailInput = document.getElementById('lead-email');
+    const submitBtn = document.getElementById('popup-submit');
+    const btnText = submitBtn.querySelector('.popup__submit-text');
+    const btnArrow = submitBtn.querySelector('.popup__submit-arrow');
+    const btnLoading = submitBtn.querySelector('.popup__submit-loading');
+
+    // Real-time validation for Mobile (only numbers)
+    mobileInput.addEventListener('input', function(e) {
+      this.value = this.value.replace(/\D/g, '').slice(0, 10);
+      if (this.value.length === 10) {
+        this.classList.remove('error');
+        document.getElementById('error-mobile').textContent = '';
+      }
+    });
+
+    const validateEmail = (email) => {
+      return String(email)
+        .toLowerCase()
+        .match(
+          /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|.(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        );
+    };
+
+    leadForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      let isValid = true;
+      
+      // Name Validation
+      if (!nameInput.value.trim()) {
+        nameInput.classList.add('error');
+        document.getElementById('error-name').textContent = 'Name is required';
+        isValid = false;
+      } else {
+        nameInput.classList.remove('error');
+        document.getElementById('error-name').textContent = '';
+      }
+
+      // Mobile Validation
+      if (mobileInput.value.length !== 10) {
+        mobileInput.classList.add('error');
+        document.getElementById('error-mobile').textContent = 'Enter a valid 10-digit number';
+        isValid = false;
+      } else {
+        mobileInput.classList.remove('error');
+        document.getElementById('error-mobile').textContent = '';
+      }
+
+      // Email Validation
+      if (!validateEmail(emailInput.value)) {
+        emailInput.classList.add('error');
+        document.getElementById('error-email').textContent = 'Enter a valid email address';
+        isValid = false;
+      } else {
+        emailInput.classList.remove('error');
+        document.getElementById('error-email').textContent = '';
+      }
+
+      if (!isValid) return;
+
+      // Loading State
+      submitBtn.disabled = true;
+      btnText.textContent = 'SAVING...';
+      btnArrow.style.display = 'none';
+      btnLoading.style.display = 'inline-block';
+
+      const formData = {
+        name: nameInput.value.trim(),
+        mobile: mobileInput.value,
+        email: emailInput.value.trim()
+      };
+
+      try {
+        const response = await fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors', // Important for Google Scripts to bypass CORS issues from client
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        });
+
+        // With no-cors, we don't get a proper JSON response back, 
+        // so we just assume success if no exception was thrown
+        
+        // Success
+        localStorage.setItem('numero_lead_submitted', 'true');
+        popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
+        
+        setTimeout(() => {
+          popupOverlay.style.display = 'none';
+          document.body.style.overflow = 'auto'; // Restore scrolling
+        }, 400);
+
+      } catch (error) {
+        console.error('Error:', error);
+        btnText.textContent = 'ERROR. TRY AGAIN';
+        submitBtn.disabled = false;
+        btnArrow.style.display = 'inline-block';
+        btnLoading.style.display = 'none';
+      }
+    });
+  }
+
 });
