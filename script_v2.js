@@ -144,18 +144,10 @@ document.addEventListener('DOMContentLoaded', () => {
   // Replace this with your deployed Google Apps Script Web App URL
   const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
 
-  // Check if user already submitted the form
-  if (localStorage.getItem('numero_lead_submitted') === 'true') {
-    if (popupOverlay) {
-      popupOverlay.style.display = 'none';
-      document.body.style.overflow = 'auto'; // allow scrolling
-    }
-  } else {
-    // Show popup and lock body scroll
-    if (popupOverlay) {
-      popupOverlay.style.display = 'flex';
-      document.body.style.overflow = 'hidden'; // prevent scrolling while popup is active
-    }
+  // Show popup and lock body scroll
+  if (popupOverlay) {
+    popupOverlay.style.display = 'flex';
+    document.body.style.overflow = 'hidden'; // prevent scrolling while popup is active
   }
 
   if (leadForm) {
@@ -256,7 +248,6 @@ document.addEventListener('DOMContentLoaded', () => {
         }
         
         // Success (or bypassed)
-        localStorage.setItem('numero_lead_submitted', 'true');
         popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
         
         setTimeout(() => {
@@ -269,7 +260,6 @@ document.addEventListener('DOMContentLoaded', () => {
         // so they aren't permanently blocked from the site
         console.error('Submission Error:', error);
         
-        localStorage.setItem('numero_lead_submitted', 'true');
         popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
         setTimeout(() => {
           popupOverlay.style.display = 'none';
