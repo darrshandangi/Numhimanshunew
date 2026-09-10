@@ -142,7 +142,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const leadForm = document.getElementById('lead-form');
   
   // Replace this with your deployed Google Apps Script Web App URL
-  const GOOGLE_SCRIPT_URL = 'YOUR_GOOGLE_SCRIPT_URL_HERE';
+  const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbwkKsi67iQRBnL9ps2LRBVesHvR9076cSjmEx_IK8zNiuP-WVsYCNWmGV7plF6SvoIS/exec';
 
   // Show popup and lock body scroll
   if (popupOverlay) {
