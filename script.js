@@ -168,6 +168,13 @@ document.addEventListener('DOMContentLoaded', () => {
     const btnLoading = submitBtn.querySelector('.popup__submit-loading');
 
     // Real-time validation for Mobile (only numbers)
+    mobileInput.addEventListener('keypress', function(e) {
+      // Prevent any key that is not a number
+      if (!/[0-9]/.test(e.key)) {
+        e.preventDefault();
+      }
+    });
+
     mobileInput.addEventListener('input', function(e) {
       this.value = this.value.replace(/\D/g, '').slice(0, 10);
       if (this.value.length === 10) {
@@ -234,20 +241,21 @@ document.addEventListener('DOMContentLoaded', () => {
       };
 
       try {
-        const response = await fetch(GOOGLE_SCRIPT_URL, {
-          method: 'POST',
-          mode: 'no-cors', // Important for Google Scripts to bypass CORS issues from client
-          cache: 'no-cache',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify(formData)
-        });
-
-        // With no-cors, we don't get a proper JSON response back, 
-        // so we just assume success if no exception was thrown
+        if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+          const response = await fetch(GOOGLE_SCRIPT_URL, {
+            method: 'POST',
+            mode: 'no-cors', // Important for Google Scripts to bypass CORS issues from client
+            cache: 'no-cache',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(formData)
+          });
+        } else {
+          console.warn("Notice: Google Script URL is not set. Bypassing save to let you test the site.");
+        }
         
-        // Success
+        // Success (or bypassed)
         localStorage.setItem('numero_lead_submitted', 'true');
         popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
         
@@ -257,11 +265,16 @@ document.addEventListener('DOMContentLoaded', () => {
         }, 400);
 
       } catch (error) {
-        console.error('Error:', error);
-        btnText.textContent = 'ERROR. TRY AGAIN';
-        submitBtn.disabled = false;
-        btnArrow.style.display = 'inline-block';
-        btnLoading.style.display = 'none';
+        // If it fails (e.g. network error), we log it but still let the user in
+        // so they aren't permanently blocked from the site
+        console.error('Submission Error:', error);
+        
+        localStorage.setItem('numero_lead_submitted', 'true');
+        popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
+        setTimeout(() => {
+          popupOverlay.style.display = 'none';
+          document.body.style.overflow = 'auto';
+        }, 400);
       }
     });
   }
