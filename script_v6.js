@@ -257,6 +257,11 @@ document.addEventListener('DOMContentLoaded', () => {
         console.warn("Notice: Google Script URL is not set. Bypassing save.");
       }
       
+      // Fire Meta Pixel Lead Event
+      if (typeof fbq === 'function') {
+        fbq('track', 'Lead');
+      }
+      
       // Close popup instantaneously
       popupOverlay.style.animation = 'popupFadeIn 0.3s ease-out reverse both';
       setTimeout(() => {
