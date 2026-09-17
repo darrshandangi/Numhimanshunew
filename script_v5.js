@@ -232,11 +232,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       if (!isValid) return;
 
-      // Loading State
+      // Instantly disable button
       submitBtn.disabled = true;
       btnText.textContent = 'SAVING...';
-      btnArrow.style.display = 'none';
-      btnLoading.style.display = 'inline-block';
 
       const formData = {
         name: nameInput.value.trim(),
@@ -244,40 +242,27 @@ document.addEventListener('DOMContentLoaded', () => {
         email: emailInput.value.trim()
       };
 
-      try {
-        if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
-          const response = await fetch(GOOGLE_SCRIPT_URL, {
-            method: 'POST',
-            mode: 'no-cors', // Important for Google Scripts to bypass CORS issues from client
-            cache: 'no-cache',
-            headers: {
-              'Content-Type': 'application/json',
-            },
-            body: JSON.stringify(formData)
-          });
-        } else {
-          console.warn("Notice: Google Script URL is not set. Bypassing save to let you test the site.");
-        }
-        
-        // Success (or bypassed)
-        popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
-        
-        setTimeout(() => {
-          popupOverlay.style.display = 'none';
-          document.body.style.overflow = 'auto'; // Restore scrolling
-        }, 400);
-
-      } catch (error) {
-        // If it fails (e.g. network error), we log it but still let the user in
-        // so they aren't permanently blocked from the site
-        console.error('Submission Error:', error);
-        
-        popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
-        setTimeout(() => {
-          popupOverlay.style.display = 'none';
-          document.body.style.overflow = 'auto';
-        }, 400);
+      // Fire fetch request in the background without waiting
+      if (GOOGLE_SCRIPT_URL !== 'YOUR_GOOGLE_SCRIPT_URL_HERE') {
+        fetch(GOOGLE_SCRIPT_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          cache: 'no-cache',
+          headers: {
+            'Content-Type': 'application/json',
+          },
+          body: JSON.stringify(formData)
+        }).catch(err => console.error('Background fetch error:', err));
+      } else {
+        console.warn("Notice: Google Script URL is not set. Bypassing save.");
       }
+      
+      // Close popup instantaneously
+      popupOverlay.style.animation = 'popupFadeIn 0.3s ease-out reverse both';
+      setTimeout(() => {
+        popupOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }, 300);
     });
   }
 
