@@ -133,6 +133,31 @@ a {
   overflow-y: auto;
   text-align: center;
   animation: popupSlideUp 0.5s 0.1s ease-out both;
+  position: relative;
+}
+
+.popup__close {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  color: var(--gray-500);
+  cursor: pointer;
+  width: 30px;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+  z-index: 10;
+}
+
+.popup__close:hover {
+  background: var(--gray-100);
+  color: var(--gray-900);
 }
 
 .popup__header {

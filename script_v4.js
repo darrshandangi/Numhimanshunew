@@ -150,6 +150,18 @@ document.addEventListener('DOMContentLoaded', () => {
     document.body.style.overflow = 'hidden'; // prevent scrolling while popup is active
   }
 
+  // Handle temporary Close button
+  const popupClose = document.getElementById('popup-close');
+  if (popupClose) {
+    popupClose.addEventListener('click', () => {
+      popupOverlay.style.animation = 'popupFadeIn 0.4s ease-out reverse both';
+      setTimeout(() => {
+        popupOverlay.style.display = 'none';
+        document.body.style.overflow = 'auto'; // Restore scrolling
+      }, 400);
+    });
+  }
+
   if (leadForm) {
     const nameInput = document.getElementById('lead-name');
     const mobileInput = document.getElementById('lead-mobile');
